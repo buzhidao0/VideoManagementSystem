@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- saved from url=(0038)http://localhost:8080/Voids/user/go.do -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,6 +17,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/Resource/z/base.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/Resource/z/css.css">
 <link rel="icon" href="http://localhost:8080/Voids/static/z/favicon.png" type="image/png">
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/Resource/js/jquery-1.12.4.min.js"></script>
+<link href="${pageContext.request.contextPath }/Resource/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="${pageContext.request.contextPath }/Resource/bootstrap/js/bootstrap.min.js"></script>
 <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
 
 </head>
@@ -43,6 +48,61 @@
 		<a class="color_e4"><img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">注册</a>
 
 	</div>
+<!-- 	<div class="modal fade" id="mainModal" tabindex="-1" role="dialog"> -->
+<!-- 		<div class="modal-dialog" role="document"> -->
+<!-- 		<div class="modal-content"> -->
+<!-- 		<div class="modal-header"> -->
+<!-- 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+<!-- 			<span aria-hidden="true">×</span></button> -->
+<!-- 			<h4 class="modal-title">修改分类</h4> -->
+<!-- 		</div> -->
+<!-- 		<form action="#" method="post"> -->
+<!-- 			<div class="modal-body"> -->
+<!-- 				<div class="form-group"> -->
+<!-- 					<label class="control-label">类别名称:</label> -->
+<!-- 					<input type="text" class="form-control" name="maincategoryname" id="updatemainname"> -->
+<!-- 				</div> -->
+<!-- 					<input type="text" class="form-control" name="main_id" id="updatemainid"  style="display: none"> -->
+<!-- 			</div> -->
+<!-- 			<div class="modal-footer"> -->
+<!-- 				<button type="submit" class="btn btn-primary">提交修改</button> -->
+<!-- 			</div> -->
+<!-- 		</form> -->
+<!-- 		</div> -->
+<!-- 		</div> -->
+<!--    </div> -->
+
+	<h2>创建模态框（Modal）</h2>
+<!-- 按钮触发模态框 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	开始演示模态框
+</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					模态框（Modal）标题
+				</h4>
+			</div>
+			<div class="modal-body">
+				在这里添加一些文本
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				<button type="button" class="btn btn-primary">
+					提交更改
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+
 </header>
 
     <!--banner图-->
@@ -253,5 +313,26 @@
 <script src="${pageContext.request.contextPath }/Resource/js/jquery-1.js"></script>
 <script src="${pageContext.request.contextPath }/Resource/js/gVerify.js"></script>
 <script src="${pageContext.request.contextPath }/Resource/js/index.js"></script>
+
+	<!-- 点击新增，弹出模态框 -->
+<script type="text/javascript">
+	$("#user_add_model_btn").click(function(){
+		$("#userAddModal").modal({
+			backdrop:"static"
+		});
+	});
+	//保存新增成功后，关闭模态框
+	$("#user_save_btn").click(function() {
+		$.ajax({
+			url : "user",
+			type : "POST",
+			data : $("#userAddModal form").serialize(),//将模态框中填写的数据提交给服务器保存
+			success : function(result) {
+				$(userAddModal).modal('hide');  // 新增成功后，关闭模态框
+				location.reload()
+			}
+		});
+	});
+</script>
 </body>
 </html>
