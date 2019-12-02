@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- saved from url=(0038)http://localhost:8080/Voids/user/go.do -->
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,15 +31,20 @@
 		<span>欢迎来到IT培训的黄埔军校——智游教育！</span>
 			
 			<div id="userBlock" style="float:right">
-				<a >退出</a>
-				<a >1@qq.com</a>
+				<a   >${sessionKey.accounts }</a>
+				<c:if test="${sessionKey.accounts == null }">
+				<img alt="${sessionKey.accounts }" src="${sessionKey.imgurl }">
+				</c:if>
+				<a href="index.jsp" >退出</a>
 			</div>
 
 		<a onclick="JavaScript:addFavorite2()"><img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/sc.png" draggable="false">加入收藏</a>
 		
 		<a target="_blank" href="http://localhost:8080/Voids/controller/adminLogin.do"><img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/we.png" draggable="false">后台管理</a>
 		<a class="color_e4"><img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
-		<a class="color_e4" href=""><img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">登录</a>
+		<c:if test="${sessionKey.accounts == null }">
+		<a class="color_e4" href="index.jsp"><img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">登录</a>
+		</c:if>
 		<a class="color_e4"><img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">注册</a>
 
 	</div>

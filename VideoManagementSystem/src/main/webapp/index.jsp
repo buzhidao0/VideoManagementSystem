@@ -45,11 +45,11 @@
 </head>
 <body>
 <div align="center">
-	<form action="LoginServlet" id="form" name="fors" class="form-signin" onsubmit="return check()" method="post">
+	<form action="Login" id="form" name="fors" class="form-signin" onsubmit="return check()" method="post">
 		<hr>
 		<h3 class="form-signin-heading">视频管理系统</h3>
 		<c:if test="${!empty msg }">${msg }</c:if><br><br>
-		<input type="text" name="username" class="input-block-level" placeholder="用户帐号" maxlength="12"><br>
+		<input type="text" name="accounts" class="input-block-level" placeholder="用户帐号" maxlength="12"><br>
 		<input type="password" name="password" class="input-block-level" placeholder="用户密码" maxlength="16"><br>
 		<input type="submit" class="btn btn-large btn-primary" value=" Login In ">
 		<hr>
@@ -83,7 +83,7 @@ function check() {
 				},
 				password:{
 					required:"请输入有效的用户密码",
-					minlength:"密码最小长度为：8位",
+					minlength:"密码最小长度为：1位",
 					maxlength:"密码最大长度为：16位"
 				}
 			}

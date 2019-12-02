@@ -4,58 +4,19 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <!-- namespace :代表这个文件的命名空间，根据这个名称可以定位到这个文件-->
   <mapper namespace="com.zhiyou.mapper.UserMapper">
-  	<resultMap type="user" id="userMap">
-  		<id column="id" property="id"/>
-  		<result column="name" property="name"/>
-  		<result column="age" property="age"/>
-  		<result column="sex" property="sex"/>
-  		<result column="username" property="username"/>
-  		<result column="password" property="password"/>
-  	</resultMap>
-  	<!-- 
-  		insert：表示插入的语句
-  		id:根据id中的值，能找到这个标签，然后执行里面的sql
-  		parameterType：表示调用sql的时候需要传递的参数类型，
-  			如果传入的是model类，那么可以在sql中使用#{属性名}来取出model对象里的值。
-  			如果只有一个参数，并且是基本数据类型可以忽略不写，然后在sql中使用#{随便写}取值。
-  		resultType:代表sql返回的结果集类型，可以直接指定model类，如果返回的是多条记录
-  			会自动转换成对应的model类型的list集合。需要：列名与model属性一致
-  		resultMap：当model属性名与数据库的列名不匹配的时候可以定义resultMap在其中指定数据库
-  			列名所对应的model属性
-  	 -->
-  	<insert id="add" parameterType="user">
+  
+  	<select id="selectByAccounts" resultType="user">
+  		select * from user where accounts=#{accounts}
+  	</select>
+  	<!-- <insert id="add" parameterType="user">
   		insert into user values(#{id},#{name},#{age},#{sex},#{username},#{password});
   	</insert>
   	<delete id="delete">
   		delete from user where id=#{dddd};
   	</delete>
   	<update id="update" parameterType="user">
-  		<!-- update user set a_name=#{name},a_age=#{age},sex=#{sex},username=#{username},
-  		password=#{password} where a_id=#{id}; -->
-  		<!-- 
-  			动态sql标签：
-  			if：判断，可以用来判断传过来的参数的值，返回结果为Boolean，如果为true则直接执行
-  				如果为false则不执行
-  			set：会帮我们自动写set关键字，并且会帮我们去掉set作用域中最后一个逗号（，）
-  		 	where:会帮我们自动写where关键字，并且会帮我们去掉where作用域中第一个and或者or
-  		 	choose:相当于java中的switch，里面有多个when标签，当有一个when标签匹配 的时候，剩下的则不再执行
-  			如果所有的when都没有进入则进入otherwise
-  			trim:功能上类似于where，会在作用域最前面加上指定前缀，并且可以去掉作用域中碰到的第一个指定内容，
-  			需要去掉的内容可以是多个，使用/分割，还可以指定后缀，并且去掉最后的相关内容。
-  		 	sql:用于定义单纯的sql，等待被多个include重复引用。
-  		 	include：用来引用sql标签定义的内容。
-  		 	foreach:循环标签，其属性
-  		 			collection：如果接口参数没有使用注解指定key，其内容为参数类型，否则填key
-  		 			item：会将循环集合内容取出，然后赋值给其内元素
-  		 	separator：每次循环的时候需要插入的分隔符
-  		 	index：循环的索引，从0开始
-  		 	open：循环开始的时候插入的内容（只执行一次）
-  		 	close：在循环结束后插入的内容（只执行一次）	
-  		 
-  		 -->
-  		
   		update user 
-  		<set><!-- 会自动添加set 会把set中最后一个，去掉 -->
+  		<set>会自动添加set 会把set中最后一个，去掉
 	  		<if test="name!=null">
 	  			name=#{name},
 	  		</if>
@@ -74,13 +35,12 @@
 	  	</set>
   		where id=#{id};
   	</update>
-  	
-  	
+  
   	<select id="selectAll" resultMap="userMap">
   		select * from user
   	</select>
   	
   	<select id="selectById" resultMap="userMap">
   		select * from user where id=#{111}
-  	</select>
+  	</select> -->
   </mapper>
