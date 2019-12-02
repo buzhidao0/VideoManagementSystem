@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace :代表这个文件的命名空间，根据这个名称可以定位到这个文件-->
+  <mapper namespace="com.zhiyou.mapper.AdminMapper">
+  	<resultMap type="admin" id="adminMap">
+  		<id column="admin_id" property="admin_id"/>
+  		<result column="accounts" property="accounts"/>
+  		<result column="password" property="password"/>
+  		<result column="admin_remark" property="admin_remark"/>
+  	</resultMap>
+  	
+  	<select id="selectByAccounts" resultMap="userMap">
+  		select * from admin where accounts=#{accounts}
+  	</select>
+  	<!-- <insert id="add" parameterType="user">
+  		insert into user values(#{id},#{name},#{age},#{sex},#{username},#{password});
+  	</insert>
+  	<delete id="delete">
+  		delete from user where id=#{dddd};
+  	</delete>
+  	<update id="update" parameterType="user">
+  		update user 
+  		<set>会自动添加set 会把set中最后一个，去掉
+	  		<if test="name!=null">
+	  			name=#{name},
+	  		</if>
+	  		<if test="age!=0">
+	  			age=#{age},
+	  		</if>
+	  		<if test="sex!=null">
+	  			sex=#{sex},
+	  		</if>
+	  		<if test="username!=null">
+	  			username=#{username},
+	  		</if>
+	  		<if test="password!=null">
+	  			password=#{password}
+	  		</if>
+	  	</set>
+  		where id=#{id};
+  	</update>
+  
+  	<select id="selectAll" resultMap="userMap">
+  		select * from user
+  	</select>
+  	
+  	<select id="selectById" resultMap="userMap">
+  		select * from user where id=#{111}
+  	</select> -->
+  </mapper>

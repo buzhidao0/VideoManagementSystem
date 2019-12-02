@@ -12,9 +12,9 @@
 <meta name="renderer" content="webkit">
 <meta name="keywords" content="Web前端视频教程,大数据视频教程,HTML5视频教程,UI视频教程,PHP视频教程,java视频教程,python基础教程">
 <meta name="description" content="智游教育在线课程视频,为您提供java,python,HTML5,UI,PHP,大数据等学科经典视频教程在线浏览学习,精细化知识点解析,深入浅出,想学不会都难,智游教育,学习成就梦想！">
-    
-<link rel="stylesheet" href="./课程展示_files/base.css">
-<link rel="stylesheet" href="./课程展示_files/css.css">
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/Resource/z/base.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/Resource/z/css.css">
 <link rel="icon" href="http://localhost:8080/video/favicon.png" type="image/png">
 <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
 </head>
@@ -40,7 +40,7 @@
 <div id="app">
     <!--banner图-->
     <div class="banner">
-    	<img alt="" src="./课程展示_files/banner-1.jpg" width="100%" height="470px;">
+    	<img alt="" src="${pageContext.request.contextPath }/Resource/z/banner-1.jpg" width="100%" height="470px;">
     </div>
 
     <!--面包屑导航-->
@@ -48,18 +48,26 @@
 
 
     <div class="classify">
-        <div class="container" id="dataContainer"><div class="section"><div class="classifyName"><p class="title title-first">Web前端入门小项目</p></div><div class="kcIntro"><p class="int"><span>课程介绍：</span>
-        适合无编程基础但想学H5前端开发的同学入门学习，也适合UI、Java、PHP等其他学科学员预习或练习。本课程通过新闻页面、个人主页、个人简历、场景秀等多个项目案例由浅入深以项目实战的方式让同学们体验到前端开发乐趣。本课程突出实战，如果希望深入学习课程中涉及到的知识可报名学习智游前端开发课程。
-        </p></div><ul>
-         
-         		<li class="section-main" onclick="getVideo(217)">
-         		<div class="thum" style="background-image: url()"></div>
-         		<p>前端开发环境搭建</p>
-         		<div class="classify-v-info"><span class="count" title="观看次数"><img src="./课程展示_files/count.png" alt="">433</span>
-         		<span class="duration" title="视频时长"><img src="./课程展示_files/player.png" alt="">562</span></div>
-         		</li>            	
-        	            
-        </ul></div>
+	<div class="container" id="dataContainer">
+        <div class="section">
+	        <div class="classifyName">
+	        	<p class="title title-first">Web前端入门小项目</p>
+	        </div>
+	        <div class="kcIntro">
+		        <p class="int">
+		        	<span>课程介绍：</span>
+					适合无编程基础但想学H5前端开发的同学入门学习，也适合UI、Java、PHP等其他学科学员预习或练习。本课程通过新闻页面、个人主页、个人简历、场景秀等多个项目案例由浅入深以项目实战的方式让同学们体验到前端开发乐趣。本课程突出实战，如果希望深入学习课程中涉及到的知识可报名学习智游前端开发课程。
+		        </p>
+	        </div>
+	        <ul>
+	      		<li class="section-main" onclick="getVideo(217)">
+	      		<div class="thum" style="background-image: url()"></div>
+	      		<p>前端开发环境搭建</p>
+	      		<div class="classify-v-info"><span class="count" title="观看次数"><img src="./课程展示_files/count.png" alt="">433</span>
+	      		<span class="duration" title="视频时长"><img src="${pageContext.request.contextPath }/Resource/z/player.png" alt="">562</span></div>
+	      		</li>            	
+	        </ul>
+        </div>
     </div>
 </div>
         
@@ -81,8 +89,8 @@
 	  		<div class="thum" style="background-image: url()"></div>
 	  		<p>Git的安装及配置</p>
 	  		<div class="classify-v-info">
-	  			<span class="count" title="观看次数"><img src="./课程展示_files/count.png" alt="">208</span>
-	  			<span class="duration" title="视频时长"><img src="./课程展示_files/player.png" alt="">320</span>
+	  			<span class="count" title="观看次数"><img src="${pageContext.request.contextPath }/Resource/z/count.png" alt="">208</span>
+	  			<span class="duration" title="视频时长"><img src="${pageContext.request.contextPath }/Resource/z/player.png" alt="">320</span>
 	  		</div>
 	  		</li>
 	           	            
@@ -106,8 +114,8 @@
 			<li class="section-main" onclick="getVideo(224)">
 		   		<div class="thum" style="background-image: url()"></div>
 		   		<p>React快速体验-组件</p>
-		   		<div class="classify-v-info"><span class="count" title="观看次数"><img src="./课程展示_files/count.png" alt="">191</span>
-		   		<span class="duration" title="视频时长"><img src="./课程展示_files/player.png" alt="">907</span></div>
+		   		<div class="classify-v-info"><span class="count" title="观看次数"><img src="${pageContext.request.contextPath }/Resource/z/count.png" alt="">191</span>
+		   		<span class="duration" title="视频时长"><img src="${pageContext.request.contextPath }/Resource/z/player.png" alt="">907</span></div>
 	   		</li>
 	    </ul>
 	    </div>
@@ -119,7 +127,7 @@
 <footer>
 <ul>
 	<li>
-		<img src="./课程展示_files/footer_logo.png" alt="" draggable="false">
+		<img src="${pageContext.request.contextPath }/Resource/z/footer_logo.png" alt="" draggable="false">
 	</li>
 	<li class="mt25">
 		<h3>各校区地址</h3>
@@ -140,8 +148,8 @@
 			<li class="erwei">
 				<br>
 				<div>
-					<img class="weixin" src="./课程展示_files/a_002.png" alt="" draggable="false">
-					<img class="weibo" src="./课程展示_files/a.png" alt="" draggable="false">
+					<img class="weixin" src="${pageContext.request.contextPath }/Resource/z/a_002.png" alt="" draggable="false">
+					<img class="weibo" src="${pageContext.request.contextPath }/Resource/z/a.png" alt="" draggable="false">
 				</div>
 			</li>
 		</ul>
@@ -155,7 +163,7 @@
 <div class="mask hidden" id="login">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="./课程展示_files/logo.png" alt="" class="ma">
+			<img src="${pageContext.request.contextPath }/Resource/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
 			<form id="loginForm" action="http://localhost:8080/Voids/#">

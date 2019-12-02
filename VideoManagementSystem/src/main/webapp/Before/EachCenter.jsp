@@ -22,11 +22,11 @@
 </head>
 
 <body>
-	<b>各人中心</b>
+	<b>个人中心</b>
 
 <header>
 	<div class="container top_bar clearfix">
-		<img src="./各人 中心_files/logo.png" alt="智游">
+		<img src="./个人 中心_files/logo.png" alt="智游">
 		<div id="tele">
 			<span>4006-371-555</span>
 			<span>0371-88888598</span>

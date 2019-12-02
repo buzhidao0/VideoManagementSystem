@@ -38,6 +38,8 @@
 		
 		<a target="_blank" href="http://localhost:8080/Voids/controller/adminLogin.do"><img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/we.png" draggable="false">后台管理</a>
 		<a class="color_e4"><img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
+		<a class="color_e4" href=""><img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">登录</a>
+		<a class="color_e4"><img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">注册</a>
 
 	</div>
 </header>
