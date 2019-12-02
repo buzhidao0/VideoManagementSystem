@@ -8,7 +8,6 @@
 <!--<base href="http://localhost:8080/Voids/">--><base href=".">
 <!-- base href="http://localhost:8080/video/" -->
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-
 <meta name="renderer" content="webkit">
 <meta name="keywords" content="Web前端视频教程,大数据视频教程,HTML5视频教程,UI视频教程,PHP视频教程,java视频教程,python基础教程">
 <meta name="description" content="智游教育在线课程视频,为您提供java,python,HTML5,UI,PHP,大数据等学科经典视频教程在线浏览学习,精细化知识点解析,深入浅出,想学不会都难,智游教育,学习成就梦想！">
@@ -25,14 +24,14 @@
 <header>
 	<div class="container">
 		<span>欢迎来到IT培训的黄埔军校——智游教育！</span>
-			<div id="userBlock" style="float:right">
-				<a>退出</a>
-				<a id="account">1@qq.com</a>
-			</div>
+		<div id="userBlock" style="float:right">
+			<a>退出</a>
+			<a id="account">1@qq.com</a>
+		</div>
 		<a onclick="JavaScript:addFavorite2()"><img src="./课程展示_files/sc.png" draggable="false">加入收藏</a>
 		
-		<a target="_blank"><img src="./课程展示_files/we.png" draggable="false">后台管理</a>
-		<a class="color_e4"><img src="./课程展示_files/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
+		<a target="_blank"><img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">后台管理</a>
+		<a class="color_e4"><img src="${pageContext.request.contextPath }/Resource/z/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
 
 	</div>
 </header>
@@ -45,7 +44,6 @@
 
     <!--面包屑导航-->
     <div class="container mian-nav" id="navDiv">公开课 / WEB前端</div>
-
 
     <div class="classify">
 	<div class="container" id="dataContainer">
@@ -63,8 +61,10 @@
 	      		<li class="section-main" onclick="getVideo(217)">
 	      		<div class="thum" style="background-image: url()"></div>
 	      		<p>前端开发环境搭建</p>
-	      		<div class="classify-v-info"><span class="count" title="观看次数"><img src="./课程展示_files/count.png" alt="">433</span>
-	      		<span class="duration" title="视频时长"><img src="${pageContext.request.contextPath }/Resource/z/player.png" alt="">562</span></div>
+	      		<div class="classify-v-info">
+		      		<span class="count" title="观看次数"><img src="${pageContext.request.contextPath }/Resource/z/count.png" alt="">433</span>
+		      		<span class="duration" title="视频时长"><img src="${pageContext.request.contextPath }/Resource/z/player.png" alt="">562</span>
+		      	</div>
 	      		</li>            	
 	        </ul>
         </div>
@@ -80,11 +80,10 @@
 		<div class="kcIntro">
 			<p class="int">
 			<span>课程介绍：</span>
-		          Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。经过本章课程学习你将轻松入门，学会使用Git管理自己的源代码，让自己的开发之路井井有条，想进一步学习Git进阶部分的同学可报名智游前端开发课程。
+				Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。经过本章课程学习你将轻松入门，学会使用Git管理自己的源代码，让自己的开发之路井井有条，想进一步学习Git进阶部分的同学可报名智游前端开发课程。
 			</p>
 		</div>
 		<ul>
-	           
 	  		<li class="section-main" onclick="getVideo(245)">
 	  		<div class="thum" style="background-image: url()"></div>
 	  		<p>Git的安装及配置</p>
@@ -93,7 +92,6 @@
 	  			<span class="duration" title="视频时长"><img src="${pageContext.request.contextPath }/Resource/z/player.png" alt="">320</span>
 	  		</div>
 	  		</li>
-	           	            
 		</ul>
 		</div>
 	</div>
@@ -106,16 +104,19 @@
 			<p class="title title-first">每天20分钟轻松入门React</p>
 		</div>
 		<div class="kcIntro">
-		<p class="int"><span>课程介绍：</span>
-	           适合有一定HTML+JS基础、想学习React的同学。本课程循序渐进、浅显易懂，非常适合React入门学习。想进一步学习和使用React进行开发的同学可以报名智游前端开发课程。
+		<p class="int">
+			<span>课程介绍：</span>
+	           	适合有一定HTML+JS基础、想学习React的同学。本课程循序渐进、浅显易懂，非常适合React入门学习。想进一步学习和使用React进行开发的同学可以报名智游前端开发课程。
 		</p>
 		</div>
 		<ul>
 			<li class="section-main" onclick="getVideo(224)">
 		   		<div class="thum" style="background-image: url()"></div>
 		   		<p>React快速体验-组件</p>
-		   		<div class="classify-v-info"><span class="count" title="观看次数"><img src="${pageContext.request.contextPath }/Resource/z/count.png" alt="">191</span>
-		   		<span class="duration" title="视频时长"><img src="${pageContext.request.contextPath }/Resource/z/player.png" alt="">907</span></div>
+		   		<div class="classify-v-info">
+			   		<span class="count" title="观看次数"><img src="${pageContext.request.contextPath }/Resource/z/count.png" alt="">191</span>
+			   		<span class="duration" title="视频时长"><img src="${pageContext.request.contextPath }/Resource/z/player.png" alt="">907</span>
+		   		</div>
 	   		</li>
 	    </ul>
 	    </div>
@@ -184,7 +185,7 @@
 <div class="mask hidden" id="reg">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="./课程展示_files/logo.png" alt="" class="ma">
+			<img src="${pageContext.request.contextPath }/Resource/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
 			<form id="regForm" action="http://localhost:8080/Voids/user/insertUser.action">
@@ -194,7 +195,10 @@
 				<input id="regPswAgain" placeholder="请再次输入密码" name="psw_again" type="password"><span id="passMsg"></span>
 				<div id="yzm" class="form-inline">
 					<input name="yzm" style="width: 45%;  display: inline-block;" type="text">
-					<div id="v_container" style="width: 45%;height: 40px;float:right;"><canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas><canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas></div>
+					<div id="v_container" style="width: 45%;height: 40px;float:right;">
+						<canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas>
+						<canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas>
+					</div>
 				</div>
 				<input onclick="return commitRegForm();" value="注　册" type="submit">
 			</form>
@@ -209,10 +213,9 @@
 	<input type="text" value="1" id="isLogin">
 </form>
 
-<script src="./课程展示_files/jquery-1.js.下载"></script>
-<script src="./课程展示_files/gVerify.js.下载"></script>
-<script src="./课程展示_files/index.js.下载"></script>
-
+<script src="${pageContext.request.contextPath }/Resource/js/jquery-1.js"></script>
+<script src="${pageContext.request.contextPath }/Resource/js/gVerify.js"></script>
+<script src="${pageContext.request.contextPath }/Resource/js/index.js"></script>
 </div>
 </body>
 </html>

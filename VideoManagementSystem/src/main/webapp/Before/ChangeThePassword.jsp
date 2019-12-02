@@ -8,7 +8,6 @@
 
 <!-- base href="http://localhost:8080/video/" -->
 <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-        
 <!--<base href="http://localhost:8080/Voids/">--><base href=".">
 <meta name="renderer" content="webkit">
 <meta name="keywords" content="Web前端视频教程,大数据视频教程,HTML5视频教程,UI视频教程,PHP视频教程,java视频教程,python基础教程">
@@ -17,42 +16,36 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/Resource/z/base.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/Resource/js/profile.css">
 <link rel="icon" href="http://localhost:8080/Voids/static/z/favicon.png" type="image/png">
-<title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
+<title>在线公开课-智游教育|java|大数据|HTML5|Python|UI|PHP视频教程</title>
 
 </head>
 
 <body class="w100">
    <b>修改密码</b>
 
-<header>
+<!-- <header> -->
 	<div class="container top_bar clearfix">
-		<img src="./修改密码_files/logo.png" alt="智游">
+		<img src="${pageContext.request.contextPath }/Resource/z/logo.png" alt="智游">
 		<div id="tele">
 			<span>4006-371-555</span>
 			<span>0371-88888598</span>
 		</div>
 	</div>
-	<menu>
+<!-- 	<menu> -->
 		<div class="container clearfix">
 			<ul class="clearfix f_left">
 				<li><a>首页</a></li>
-				
-				<li class="menu_active"><a ">个人中心</a></li>
+				<li class="menu_active"><a href="">个人中心</a></li>
 			</ul>
-			
 			<div id="user_bar">
-				<a>
-						
-					<img id="avatar" src="./修改密码_files/avatar_lg.png" alt="" "="">
-
-				</a>
-				<a >退出</a>
+				<a href=""><img id="avatar" src="./修改密码_files/avatar_lg.png" alt=""></a>
+				<a href="">退出</a>
 			</div>
 		</div>
-	</menu>
-</header>
+<!-- 	</menu> -->
+<!-- </header> -->
 
-<main>
+<!-- <main> -->
 <div class="container">
 	<h2>我的资料</h2>
 	<div id="profile_tab">
@@ -78,7 +71,7 @@
                         </div>
                         <div class="form_group">
                             <span class="dd">新　密　码：</span>
-                            <input i type="password">
+                            <input type="password">
                         </div>
                         <div class="form_group">
                             <span class="dd">确认新密码：</span>
@@ -94,9 +87,9 @@
         </div>
 	</div>
 </div>
-</main>
+<!-- </main> -->
 
-<footer>
+<!-- <footer> -->
 	<div class="container">
 		<ul>
 			<li><img src="${pageContext.request.contextPath }/Resource/z/footer_logo.png" alt="" id="foot_logo"></li>
@@ -104,7 +97,7 @@
 			<li><img src="${pageContext.request.contextPath }/Resource/z/a.png" alt="" id="wxgzh"></li>
 		</ul>
 	</div>
-</footer>
+<!-- </footer> -->
 
 </body>
 </html>

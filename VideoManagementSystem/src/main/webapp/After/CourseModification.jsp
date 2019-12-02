@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -49,7 +48,9 @@
 				<li class="active"><a 课程管理></a></li>
 			</ul>
 			<p class="navbar-text navbar-right">
-				<span>admin</span> <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>&nbsp;&nbsp;<a class="navbar-link">退出</a>
+				<span>admin</span>
+				<i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>&nbsp;&nbsp;
+				<a class="navbar-link">退出</a>
 			</p>
 		</div>
 		<!-- /.navbar-collapse -->

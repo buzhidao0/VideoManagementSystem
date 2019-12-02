@@ -7,18 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <!--<base href="http://localhost:8080/Voids/">--><base href=".">
-		
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>智游教育</title>
 
 <link href="${pageContext.request.contextPath }/Resource/bootstrap/css/bootstrap.css" rel="stylesheet">
-
-<script src="${pageContext.request.contextPath }/Resource/js/jquery-1.js"></script>
-<script src="${pageContext.request.contextPath }/Resource/bootstrap/js/bootstrap.js"></script>
-<script src="${pageContext.request.contextPath }/Resource/js/confirm.js"></script>
-<script src="${pageContext.request.contextPath }/Resource/js/jquery.js"></script>
-<script src="${pageContext.request.contextPath }/Resource/js/message_cn.js"></script>
 
 <style type="text/css">
 	th {
@@ -160,8 +153,11 @@
 </div>
 <div id="modal-background" class=""></div>
 
-</body>
-
+<script src="${pageContext.request.contextPath }/Resource/js/jquery-1.js"></script>
+<script src="${pageContext.request.contextPath }/Resource/bootstrap/js/bootstrap.js"></script>
+<script src="${pageContext.request.contextPath }/Resource/js/confirm.js"></script>
+<script src="${pageContext.request.contextPath }/Resource/js/jquery.js"></script>
+<script src="${pageContext.request.contextPath }/Resource/js/message_cn.js"></script>
 <script type="text/javascript">
 	function showAddPage(){
 		location.href="Course/addCourse.do";
@@ -186,5 +182,5 @@
 		});
 	}
 </script>
- 
+</body>
 </html>

@@ -12,11 +12,11 @@
 <meta name="renderer" content="webkit">
 <meta name="keywords" content="Web前端视频教程,大数据视频教程,HTML5视频教程,UI视频教程,PHP视频教程,java视频教程,python基础教程">
 <meta name="description" content="智游教育在线课程视频,为您提供java,python,HTML5,UI,PHP,大数据等学科经典视频教程在线浏览学习,精细化知识点解析,深入浅出,想学不会都难,智游教育,学习成就梦想！">
-    
-<link rel="stylesheet" href="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/base.css">
-<link rel="stylesheet" href="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/css.css">
+
+<link rel="stylesheet" href="${pageContext.request.contextPath }/Resource/z/base.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/Resource/z/css.css">
 <link rel="icon" href="http://localhost:8080/Voids/static/z/favicon.png" type="image/png">
-    <title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
+<title>在线公开课-智游教育|java|大数据|HTML5|python|UI|PHP视频教程</title>
 
 </head>
 
@@ -34,10 +34,13 @@
 				<a >1@qq.com</a>
 			</div>
 
-		<a onclick="JavaScript:addFavorite2()"><img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/sc.png" draggable="false">加入收藏</a>
+		<a onclick="JavaScript:addFavorite2()"><img src="${pageContext.request.contextPath }/Resource/z/sc.png" draggable="false">加入收藏</a>
 		
-		<a target="_blank" href="http://localhost:8080/Voids/controller/adminLogin.do"><img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/we.png" draggable="false">后台管理</a>
-		<a class="color_e4"><img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
+		<a target="_blank" href="http://localhost:8080/Voids/controller/adminLogin.do">
+		<img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">后台管理</a>
+		<a class="color_e4"><img src="${pageContext.request.contextPath }/Resource/z/phone.png" draggable="false"> 0371-88888598　　4006-371-555</a>
+		<a class="color_e4" href=""><img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">登录</a>
+		<a class="color_e4"><img src="${pageContext.request.contextPath }/Resource/z/we.png" draggable="false">注册</a>
 
 	</div>
 </header>
@@ -56,20 +59,20 @@
                     <tbody><tr>
                         <td colspan="2">
                             <a >
-                                <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/html5.jpg" alt="" class="image scale" draggable="false">
+                                <img src="${pageContext.request.contextPath }/Resource/z/html5.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>Web前端教程</span>
-                                    <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/Resource/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
                         <td>
                             <!--上线时修改id-->
                             <a >
-                                <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/ui.jpg" alt="" class="image scale" draggable="false">
+                                <img src="${pageContext.request.contextPath }/Resource/z/ui.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>UI设计教程</span>
-                                    <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/Resource/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
@@ -78,7 +81,7 @@
                                 <img src="${pageContext.request.contextPath }/Resource/z/java.jpg" alt="" class="image" draggable="false">
                                 <div class="headline">
                                     <span>Java教程</span>
-                                    <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/Resource/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
@@ -86,19 +89,19 @@
                     <tr>
                         <td>
                             <a  class="opacity5">
-                                <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/bigdata.jpg" alt="" class="image" draggable="false">
+                                <img src="${pageContext.request.contextPath }/Resource/z/bigdata.jpg" alt="" class="image" draggable="false">
                                 <div class="headline">
                                     <span>大数据教程</span>
-                                    <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/Resource/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
                         <td colspan="2">
                             <a >
-                                <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/python.jpg" alt="" class="image scale" draggable="false">
+                                <img src="${pageContext.request.contextPath }/Resource/z/python.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>Python教程</span>
-                                    <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/Resource/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
@@ -106,17 +109,17 @@
                     <tr>
                         <td colspan="2">
                             <a>
-                                <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/php.jpg" alt="" class="image scale" draggable="false">
+                                <img src="${pageContext.request.contextPath }/Resource/z/php.jpg" alt="" class="image scale" draggable="false">
                                 <div class="headline">
                                     <span>PHP教程</span>
-                                    <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/arrow.png" alt="">
+                                    <img src="${pageContext.request.contextPath }/Resource/z/arrow.png" alt="">
                                 </div>
                             </a>
                         </td>
                         <td colspan="2" class="three_two">
-                            <img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/qidai.jpg" alt="" class="image" draggable="false">
+                            <img src="${pageContext.request.contextPath }/Resource/z/qidai.jpg" alt="" class="image" draggable="false">
                             <div class="headline">
-                                更多课程，敬请期待...
+                               	 更多课程，敬请期待...
                             </div>
                         </td>
                     </tr>
@@ -132,7 +135,9 @@
     <!--报名表单-->
     <div class="form_area">
         <div class="container">
-            <p class="title"><b>这个世界上可以选择的很多，可以改变命运的选择很少<br>你现在准备好向梦想出发了吗？</b></p>
+            <p class="title">
+            	<b>这个世界上可以选择的很多，可以改变命运的选择很少<br>你现在准备好向梦想出发了吗？</b>
+            </p>
             <form id="iform" action="http://localhost:8080/090/plus/dmail.php" enctype="multipart/form-data" method="post">
                 <div class="form_line1"></div>
                 <div class="form_line2"></div>
@@ -142,9 +147,18 @@
                     <input name="do" value="2" type="hidden">
                     <input name="ip" value="" type="hidden">
                     <input name="time" value="" type="hidden">
-                    <div><label for="name">姓名：</label><input name="name" id="name" class="form-control" type="text"></div>
-                    <div><label for="tel">手机号：</label><input name="tel" id="tel" class="form-control" type="text"></div>
-                    <div><label for="qq">QQ：</label><input name="qq" id="qq" class="form-control" type="text"></div>
+                    <div>
+                    	<label for="name">姓名：</label>
+                    	<input name="name" id="name" class="form-control" type="text">
+                    </div>
+                    <div>
+                    	<label for="tel">手机号：</label>
+                    	<input name="tel" id="tel" class="form-control" type="text">
+                    </div>
+                    <div>
+                    	<label for="qq">QQ：</label>
+                    	<input name="qq" id="qq" class="form-control" type="text">
+                    </div>
                 </div>
                 <input class="button" value="立即报名" type="submit">
             </form>
@@ -177,8 +191,8 @@
 				<li class="erwei">
 					<br>
 					<div>
-						<img class="weixin" src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/a_002.png" alt="" draggable="false">
-						<img class="weibo" src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/a.png" alt="" draggable="false">
+						<img class="weixin" src="${pageContext.request.contextPath }/Resource/z/a_002.png" alt="" draggable="false">
+						<img class="weibo" src="${pageContext.request.contextPath }/Resource/z/a.png" alt="" draggable="false">
 					</div>
 				</li>
 			</ul>
@@ -191,7 +205,7 @@
 <div class="mask hidden" id="login">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/logo.png" alt="" class="ma">
+			<img src="${pageContext.request.contextPath }/Resource/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
 			<form id="loginForm" action="http://localhost:8080/Voids/#">
@@ -212,7 +226,7 @@
 <div class="mask hidden" id="reg">
 	<div class="mask_content">
 		<div class="mask_content_header">
-			<img src="./在线公开课-智游教育_java_大数据_HTML5_python_UI_PHP视频教程_files/logo.png" alt="" class="ma">
+			<img src="${pageContext.request.contextPath }/Resource/z/logo.png" alt="" class="ma">
 		</div>
 		<div class="mask_content_body">
 			<form id="regForm" action="http://localhost:8080/Voids/user/insertUser.action">
@@ -222,7 +236,10 @@
 				<input id="regPswAgain" placeholder="请再次输入密码" name="psw_again" type="password"><span id="passMsg"></span>
 				<div id="yzm" class="form-inline">
 					<input name="yzm" style="width: 45%; display: inline-block;" type="text">
-					<div id="v_container" style="width: 45%;height: 40px;float:right;"><canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas><canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas></div>
+					<div id="v_container" style="width: 45%;height: 40px;float:right;">
+						<canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas>
+						<canvas id="verifyCanvas" width="100" height="38" style="cursor: pointer;">您的浏览器版本不支持canvas</canvas>
+					</div>
 				</div>
 				<input onclick="return commitRegForm();" value="注　册" type="submit">
 			</form>
