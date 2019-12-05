@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import com.zhiyou.model.Course;
 import com.zhiyou.model.Speaker;
 import com.zhiyou.model.Video;
 
@@ -28,4 +29,16 @@ public interface VideoService {
 
 	// 通过speaker_id查到speaker_name
 	Speaker seleteSpeakerNameById();
+
+	// 查询所有信息
+	List<Video> selectAll();
+
+	// 查询speaker主讲人的所有
+	List<Speaker> selectSpeaker();
+
+	// 查询课程所有
+	List<Course> seleteCourse();
+
+	// 模糊查询
+	List<Video> selectLike(Video video);
 }

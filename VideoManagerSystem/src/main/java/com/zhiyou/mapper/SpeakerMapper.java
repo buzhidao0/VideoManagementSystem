@@ -23,4 +23,7 @@ public interface SpeakerMapper {
 
 	// 删除主讲人信息
 	int deleteSpeaker(int id);
+
+	// 模糊查询
+	List<Speaker> selectLike(Speaker speaker);
 }

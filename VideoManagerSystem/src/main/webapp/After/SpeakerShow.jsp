@@ -34,8 +34,8 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
 			<ul class="nav navbar-nav">
-				<li><a href="videoShow">视频管理</a></li>
-				<li><a href="speakerShow">主讲人管理</a></li>
+				<li class="active"><a href="videoShow">视频管理</a></li>
+				<li class="active"><a href="speakerShow">主讲人管理</a></li>
 				<li class="active"><a href="courseShow">课程管理</a></li>
 			</ul>
 			<p class="navbar-text navbar-right">
@@ -54,7 +54,7 @@
   </div>
 </div>
 	
-<form action="http://localhost:8080/Voids/Course/deleteall.do">
+
 	<div class="container">
 	    <button onclick="showAddPage()" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		      添加
@@ -64,7 +64,15 @@
 		      批量删除
 		</button>
 	</div>
+	<div>
+	<div class="container">
+		<form action="selectAll">
+			<input class="btn btn-info dropdown-toggle" type="text" name="course_title" placeholder="请输入你要查询的标题">
+			<input class="btn btn-info dropdown-toggle" type="submit" value="搜索">
+		</form>
+	</div>
 	
+	</div>
 	<div class="container" style="margin-top: 20px;">
 		
 	<table class="table table-bordered table-hover" style="text-align: center;table-layout:fixed;">
@@ -129,7 +137,7 @@
 			</div>
 		</div>
 	</div>
-</form>
+
 
 <div id="modal-background" class=""></div>
 <div id="confirm-modal" class="modal fade role=" dialog"="" tabindex="-1">

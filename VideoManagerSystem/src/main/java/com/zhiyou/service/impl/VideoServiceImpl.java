@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.zhiyou.mapper.VideoMapper;
+import com.zhiyou.model.Course;
 import com.zhiyou.model.Speaker;
 import com.zhiyou.model.Video;
 import com.zhiyou.service.VideoService;
@@ -66,6 +67,30 @@ public class VideoServiceImpl implements VideoService {
 	public Speaker seleteSpeakerNameById() {
 		// TODO Auto-generated method stub
 		return videoMapper.seleteSpeakerNameById();
+	}
+
+	@Override
+	public List<Video> selectAll() {
+		// TODO Auto-generated method stub
+		return videoMapper.selectAll();
+	}
+
+	@Override
+	public List<Speaker> selectSpeaker() {
+		// TODO Auto-generated method stub
+		return videoMapper.selectSpeaker();
+	}
+
+	@Override
+	public List<Course> seleteCourse() {
+		// TODO Auto-generated method stub
+		return videoMapper.seleteCourse();
+	}
+
+	@Override
+	public List<Video> selectLike(Video video) {
+		// TODO Auto-generated method stub
+		return videoMapper.selectLike(video);
 	}
 
 }

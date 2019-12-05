@@ -38,12 +38,15 @@ public class VideoController {
 	@RequestMapping("updateVideo")
 	public String updateCourse(Integer id, HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		req.setAttribute("video", videoService.selectVideoById(id));
+		req.setAttribute("speaker", videoService.selectSpeaker());
+		req.setAttribute("course", videoService.seleteCourse());
 		return "After/VideoUpdate";
 
 	}
 
 	@RequestMapping("alterUpdateVideo")
 	public String alterUpdateVideo(Video video, HttpServletRequest req, HttpServletResponse resp) throws Exception {
+		System.out.println("\t\tvideo" + video);
 		videoService.updateVideo(video);
 		return "redirect:videoShow";
 
@@ -51,7 +54,8 @@ public class VideoController {
 
 	@RequestMapping("addVideo")
 	public String addCourse(HttpServletRequest req, HttpServletResponse resp) throws Exception {
-
+		req.setAttribute("speaker", videoService.selectSpeaker());
+		req.setAttribute("course", videoService.seleteCourse());
 		return "After/VideoAdd";
 
 	}

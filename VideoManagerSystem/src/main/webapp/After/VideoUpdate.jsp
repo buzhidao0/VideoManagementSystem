@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <!-- saved from url=(0055)http://localhost:8080/Voids/Course/Courseupdate.do?id=6 -->
 <html>
@@ -71,14 +72,14 @@ b {
 
 	<div class="container" style="margin-top: 20px;">
 
-		<form id="infoForm" class="form-horizontal">
+		<form id="infoForm" action="alterUpdateVideo" class="form-horizontal">
 
-			<input name="id" value="6" type="hidden">
+			<input name="video_id" value="${video.video_id }" type="hidden">
 			<div class="form-group">
 				<label for="subjectId" class="col-sm-2 control-label">视频标题</label>
 				<div class="col-sm-10">
 					<input class="form-control" name="title" id="title"
-						placeholder="${video.title }" type="text">
+						placeholder="${video.title }" value="${video.title }" type="text">
 				</div>
 			</div>
 
@@ -86,8 +87,8 @@ b {
 				<label for="subjectTitle" class="col-sm-2 control-label">主讲人</label>
 				<div class="col-sm-10">
 					<select id="speaker_id" name="speaker_id">
-						<c:forEach var="video" items="${video }">
-							<option value="${video.speaker_id }">${video.speaker.speaker_name }</option>
+						<c:forEach var="speaker" items="${speaker }">
+							<option value="${speaker.id }">${speaker.speaker_name }</option>
 						</c:forEach>
 					</select>
 				</div>
@@ -96,8 +97,8 @@ b {
 				<label for="subjectTitle" class="col-sm-2 control-label">所属课程</label>
 				<div class="col-sm-10">
 					<select id="course_id" name="course_id">
-						<c:forEach var="video" items="${video }">
-							<option value="${video.course_id }">${video.course.subject.subject_name }</option>
+						<c:forEach var="course" items="${course }">
+							<option value="${course.id }">${course.course_title }</option>
 						</c:forEach>
 					</select>
 				</div>
@@ -106,21 +107,21 @@ b {
 				<label for="subjectTitle" class="col-sm-2 control-label">视频时长(秒)</label>
 				<div class="col-sm-10">
 					<input class="form-control" name="time" id="time"
-						placeholder="${video.time }" type="text">
+						placeholder="${video.time }" value="${video.time }" type="text">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="subjectTitle" class="col-sm-2 control-label">封面图片地址</label>
 				<div class="col-sm-10">
 					<input class="form-control" name="image_url" id="image_url"
-						placeholder="${video.image_url }" type="text">
+						placeholder="${video.image_url }" value="${video.image_url }" type="text">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="subjectTitle" class="col-sm-2 control-label">视频播放地址</label>
 				<div class="col-sm-10">
 					<input class="form-control" name="video_url" id="video_url"
-						placeholder="${video.video_url }" type="text">
+						placeholder="${video.video_url }" value="${video.video_url }" type="text">
 				</div>
 			</div>
 			<div class="form-group">

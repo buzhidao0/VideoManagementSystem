@@ -2,112 +2,152 @@
 <!DOCTYPE mapper  
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <!-- namespace :代表这个文件的命名空间，根据这个名称可以定位到这个文件-->
-  <mapper namespace="com.zhiyou.mapper.VideoMapper">
-  	<resultMap type="video" id="videoMap">
-  		<id column="video_id" property="video_id"/>
-  		<result column="title" property="title"/>
-  		<result column="detail" property="detail"/>
-  		<result column="time" property="time"/>
-  		<result column="speaker_id" property="speaker_id"/>
-  		<result column="course_id" property="course_id"/>
-  		<result column="video_url" property="video_url"/>
-  		<result column="image_url" property="image_url"/>
-  		<result column="play_num" property="play_num"/>
-  		<!-- 子表 -->
-  		<association property="course" javaType="course" >
-  			<id column="id" property="id"/>
-	  		<result column="course_title" property="course_title"/>
-	  		<result column="course_desc" property="course_desc"/>
-	  		<result column="subject_id" property="subject_id"/>
-	  		<association property="subject" javaType="subject" >
-	  			<id column="subject_id" property="subject_id"/>
-	  			<result column="subject_name" property="subject_name"/>
-  			</association>
-  		</association>
-  		<!-- 父表 -->
-  		<association property="speaker" javaType="speaker" >
-  			<id column="id" property="id"/>
-	  		<result column="speaker_name" property="speaker_name"/>
-	  		<result column="speaker_desc" property="speaker_desc"/>
-	  		<result column="speaker_job" property="speaker_job"/>
-	  		<result column="pic_url" property="pic_url"/>
-  		</association>
-  	</resultMap>
-  		
-  	<!-- 查询课程所有 -->
-  	<select id="selectVideoAll"  resultMap="videoMap">
-  		select * from video v,speaker s where v.speaker_id=s.id limit #{0},#{1}
-  	</select>
-  	<!-- 查询总条数 -->
-  	<select id="selectVideoCount" resultType="Integer">
-  		select count(*) from video
+<!-- namespace :代表这个文件的命名空间，根据这个名称可以定位到这个文件 -->
+<mapper namespace="com.zhiyou.mapper.VideoMapper">
+	<resultMap type="video" id="videoMap">
+		<id column="video_id" property="video_id" />
+		<result column="title" property="title" />
+		<result column="detail" property="detail" />
+		<result column="time" property="time" />
+		<result column="speaker_id" property="speaker_id" />
+		<result column="course_id" property="course_id" />
+		<result column="video_url" property="video_url" />
+		<result column="image_url" property="image_url" />
+		<result column="play_num" property="play_num" />
+		<!-- 子表 -->
+		<association property="course" javaType="course">
+			<id column="id" property="id" />
+			<result column="course_title" property="course_title" />
+			<result column="course_desc" property="course_desc" />
+			<result column="subject_id" property="subject_id" />
+			<association property="subject" javaType="subject">
+				<id column="subject_id" property="subject_id" />
+				<result column="subject_name" property="subject_name" />
+			</association>
+		</association>
+		<!-- 父表 -->
+		<association property="speaker" javaType="speaker">
+			<id column="id" property="id" />
+			<result column="speaker_name" property="speaker_name" />
+			<result column="speaker_desc" property="speaker_desc" />
+			<result column="speaker_job" property="speaker_job" />
+			<result column="pic_url" property="pic_url" />
+		</association>
+	</resultMap>
+
+	<!-- 查询课程所有 -->
+	<select id="selectVideoAll" resultMap="videoMap">
+		select * from video v,speaker s where v.speaker_id=s.id limit #{0},#{1}
+	</select>
+	<!-- 查询总条数 -->
+	<select id="selectVideoCount" resultType="Integer">
+		select count(*) from video
+	</select>
+
+	<!-- 通过id查到课程的信息 -->
+	<select id="selectVideoById" resultMap="videoMap">
+		select * from (select * from video v2,
+		(select * from course c3, (select s.subject_id sid ,s.subject_name from
+		subject s) s2
+		where c3.subject_id = s2.sid) c2 where v2.course_id = c2.id) v,speaker s
+		where s.id = v.speaker_id
+		and v.video_id=#{id}
+	</select>
+	<!-- 更新课程信息 -->
+	<update id="updateVideo" parameterType="video">
+		update video
+		<set>
+			<if test="title!=null">
+				title=#{title},
+			</if>
+			<if test="detail!=null">
+				detail=#{detail},
+			</if>
+			<if test="time!=0">
+				time=#{time},
+			</if>
+			<if test="speaker_id!=0">
+				speaker_id=#{speaker_id},
+			</if>
+			<if test="course_id!=0">
+				course_id=#{course_id},
+			</if>
+			<if test="video_url!=null">
+				video_url=#{video_url},
+			</if>
+			<if test="image_url!=null">
+				image_url=#{image_url},
+			</if>
+			<if test="play_num!=null">
+				play_num=#{play_num}
+			</if>
+
+		</set>
+		where video_id=#{video_id};
+	</update>
+
+	<!-- 添加课程信息 -->
+	<insert id="addVideo" parameterType="video">
+		insert into video values(null,#{title}, #{detail}, #{time}, #{speaker_id},
+		#{course_id},#{video_url},#{image_url},0);
+	</insert>
+
+	<!-- 查询所有信息 -->
+	<!-- <select id="selectAll" resultMap="videoMap"> select distict * from 
+		(select * from video v2, (select * from course c3, (select s.subject_id sid 
+		,s.subject_name from subject s) s2 where c3.subject_id = s2.sid) c2 where 
+		v2.course_id = c2.id) v,speaker s where s.id = v.speaker_id </select> -->
+	<delete id="deleteVideo">
+		delete from video where video_id=#{video_id};
+	</delete>
+	<resultMap type="speaker" id="speakermap">
+		<id column="id" property="id" />
+		<result column="speaker_name" property="speaker_name" />
+		<result column="speaker_desc" property="speaker_desc" />
+		<result column="speaker_job" property="speaker_job" />
+		<result column="pic_url" property="pic_url" />
+	</resultMap>
+	<!-- 查询speaker的所有主讲人信息 -->
+	<select id="selectSpeaker" resultMap="speakermap">
+		select * from speaker
+	</select>
+
+	<resultMap type="course" id="coursemap">
+		<id column="id" property="id" />
+			<result column="course_title" property="course_title" />
+			<result column="course_desc" property="course_desc" />
+			<result column="subject_id" property="subject_id" />
+	</resultMap>
+	
+	<select id="seleteCourse" resultMap="coursemap">
+		select * from course
+	</select>
+	
+	<!-- 模糊查询 -->
+	<select id="selectLike" resultMap="videoMap" parameterType="video" >
+  		<include refid="as"/>
   	</select>
   	
-  	<!-- 通过id查到课程的信息 -->
-  	<select id="selectVideoById" resultMap="videoMap">
-  		select * from (select * from video v2,	
-  			(select * from course c3, (select s.subject_id sid ,s.subject_name from subject s) s2 
-  				where c3.subject_id = s2.sid) c2 where v2.course_id = c2.id) v,speaker s  where  s.id = v.speaker_id
-  					and v.video_id=#{id}
-  	</select>
-  	<!-- 更新课程信息 -->
-  	<update id="updateVideo" parameterType="video">
-  		update video
-  		<set>
-	  		<if test="title!=null">
-	  			title=#{title},
+  	
+  	<sql id="as" >
+  		select * from video 
+  		<trim prefix="where" prefixOverrides="and/or">
+  			<if test="video_id!=0">
+	  			video_id like concat('%',#{video_id},'%') 
 	  		</if>
-	  		<if test="detail!=null">
-	  			detail=#{detail},
+  			<if test="title!=null">
+	  			and title like concat('%',#{title} ,'%') 
 	  		</if>
-	  		<if test="time!=null">
-	  			time=#{time}
+	  		<if test="detail!=0">
+	  			and detail like  concat('%',#{detail},'%')  
 	  		</if>
 	  		<if test="speaker_id!=null">
-	  			speaker_id=#{speaker_id},
+	  		    and speaker_id like concat('%',#{speaker_id} ,'%')  
 	  		</if>
 	  		<if test="course_id!=null">
-	  			course_id=#{course_id},
+	  			and course_id like concat('%', #{course_id} ,'%') 
 	  		</if>
-	  		<if test="video_url!=null">
-	  			video_url=#{video_url},
-	  		</if>
-	  		<if test="image_url!=null">
-	  			image_url=#{image_url},
-	  		</if>
-	  		<if test="play_num!=null">
-	  			play_num=#{play_num}
-	  		</if>
-	  		
-	  	</set>
-  		where video_id=#{video_id};
-  	</update>
-  
-  <!-- 添加课程信息 -->
-  <insert id="addVideo" parameterType="video">
-  		insert into video values(null,#{title}, #{detail}, #{time}, #{speaker_id}, #{course_id},#{video_url},#{image_url},#{play_num});
-  </insert>
-  
-  
-  <!-- 	<select id="selectAll" resultMap="userMap">
-  		select * from user
-  	</select> -->
-  	<!-- 删除主讲人信息 -->
-  	<delete id="deleteVideo">
-  		delete from video where video_id=#{video_id};
-  	</delete>
-  	
-  	<!-- <resultMap type="speaker" id="speakerMap">
-  		<id column="id" property="id"/>
-  		<result column="speaker_name" property="speaker_name"/>
-  		<result column="speaker_desc" property="speaker_desc"/>
-  		<result column="speaker_job" property="speaker_job"/>
-  		<result column="pic_url" property="pic_url"/>
-  	</resultMap> -->
-  	<!-- 通过id查询speaker_name -->
-	<!-- <select id="seleteSpeakerNameById"  resultMap="speakerMap">
-  		select * from speaker 
-  	</select> -->
-  	
-  </mapper>
+	  	</trim>
+  	</sql>
+	
+</mapper>

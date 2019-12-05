@@ -161,7 +161,7 @@
 				'primary': true,
 				'callback': function() {
 					var param={"id":id};
-					$.post("admin/course/delCourse.action",param,function(data){
+					$.post("deleteVideo",param,function(data){
 						if(data=='success'){
 							Confirm.show('温馨提示：', '删除成功');
 							document.location.reload();
