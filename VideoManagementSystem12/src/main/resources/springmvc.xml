@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+  
+  	<!-- 1.扫描包器 -->
+	<context:component-scan base-package="com.zhiyou"/>
+	<!-- 2.SpringMvc注解驱动 -->
+	<mvc:annotation-driven/> 
+	<!-- 开启静态资源的支持 --> 
+  	<mvc:default-servlet-handler/>
+  	<!-- 3.视图解析器，可以帮助我们的返回的视图自动加上前后缀 -->
+  	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+  		<property name="prefix" value="/WbYx/"></property>
+  		<property name="suffix" value=".jsp"></property>
+  	</bean>
+  	<!-- 4.加载db属性文件 -->
+  	<util:properties location="classpath:db.properties" id="db"></util:properties>
+  	<!-- 5.配置数据源 -->
+  	 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+    	<property name="driverClassName" value="#{db.driver}"></property>
+	    <property name="url" value="#{db.url}"></property>
+	    <property name="username" value="#{db.username}"></property>
+	    <property name="password" value="#{db.password}"></property>
+    </bean>
+  	<!-- 6.配置Mybatis sqlSession工厂 -->
+  	<bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+  		<property name="dataSource" ref="dataSource"/>
+  		<!-- 指定Mabatis配置文件的位置 -->
+  		<property name="configLocation" value="classpath:MyBatisConf.xml"/>	
+  		<!-- 指定mapper文件的位置 -->
+  		<property name="mapperLocations" value="classpath:mapper/*.xml"/>
+  	</bean>
+  	
+  	<!-- 7.配置dao接口的扫描配置 -->
+  	<bean  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+  		<!-- 指定dao层接口所在包的位置 -->
+  		<property name="basePackage" value="com.zhiyou.mapper"/>
+  		<!-- 引用MyBatis的session工厂 -->
+  		<property name="sqlSessionFactory" ref="sessionFactory"></property>
+  	</bean>
+  	
+  	<!-- 上传图片 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 配置需要拦截的路径 -->
+			<mvc:mapping path="/**"/>
+			<!-- 指定不拦截的类 -->
+			<mvc:exclude-mapping path="/WbYx/**"/>
+<!-- 			<mvc:exclude-mapping path="/*.js"/> -->
+			<!-- 指定拦截的类 -->
+			<bean class="com.zhiyou.filter.FilterTypeInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!-- 虽然所有的配置都有默认值，但是我们还是要在 xml 中，给这个bean配置出来 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- 文件的总大小 -->
+		<property name="maxUploadSize" value="#{1024*1024}"></property>
+		<!-- 每次缓存4字节 -->
+		<property name="maxInMemorySize" value="4094"></property>
+		<!-- 指定文件的编码格式 -->
+		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+	
+	<bean id="simpleMappingExceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">/error</prop>
+			</props>
+		</property>
+	</bean>
+  	
+  </beans>

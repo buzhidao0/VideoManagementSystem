@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace :代表这个文件的命名空间，根据这个名称可以定位到这个文件-->
+  <mapper namespace="com.zhiyou.mapper.UserMapper">
+  	<resultMap type="user" id="userMap">
+  		<id column="id" property="id"/>
+  		<result column="accounts" property="accounts"/>
+  		<result column="phone" property="phone"/>
+  		<result column="password" property="password"/>
+  		<result column="nickname" property="nickname"/>
+  		<result column="sex" property="sex"/>
+  		<result column="birthday" property="birthday"/>
+  		<result column="address" property="address"/>
+  		<result column="imgurl" property="imgurl"/>
+  		<result column="createtime" property="createtime"/>
+  	</resultMap>
+  
+  	<select id="selectByAccounts" resultType="user" resultMap="userMap">
+  		select * from user where accounts = #{accounts}
+  	</select>
+  	
+  	<insert id="registered" parameterType="user">
+  		insert into user (accounts, password) values(#{accounts}, #{password});
+  	</insert>
+  	
+<!--   	<select id="selectById" resultMap="userMap"> -->
+<!--   		select * from user where id=#{111} -->
+<!--   	</select> -->
+  	
+  	<select id="selectByAccount" resultType="user" resultMap="userMap">
+  		select * from user where accounts = #{accounts}
+  	</select>
+  	
+  	<update id="modifyTheData" parameterType="user">
+  		update user 
+  		<set>
+	  		<if test="phone!=null">
+	  			phone=#{phone},
+	  		</if>
+	  		<if test="password!=null">
+	  			password=#{password},
+	  		</if>
+	  		<if test="nickname!=null">
+	  			nickname=#{nickname},
+	  		</if>
+	  		<if test="sex!=null">
+	  			sex=#{sex}, 
+	  		</if>
+	  		<if test="birthday!=null">
+	  			birthday=#{birthday}, 
+	  		</if>
+	  		<if test="address!=null">
+	  			address=#{address}, 
+	  		</if>
+	  		<if test="imgurl!=null">
+	  			imgurl=#{imgurl}, 
+	  		</if>
+	  		<if test="createtime!=null">
+	  			createtime=#{createtime}
+	  		</if>
+	  	</set>
+  		where accounts=#{accounts}
+  	</update>
+  
+  	<select id="selectAll" resultMap="userMap">
+  		select * from user
+  	</select>
+  	
+  	<!-- <delete id="delete">
+  		delete from user where id=#{dddd};
+  	</delete> -->
+  	
+
+  	
+  </mapper>
