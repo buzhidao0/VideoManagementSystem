@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace :代表这个文件的命名空间，根据这个名称可以定位到这个文件-->
+  <mapper namespace="com.zhiyou.mapper.SpeakerMapper">
+  	<resultMap type="speaker" id="speakerMap">
+  		<id column="id" property="id"/>
+  		<result column="speaker_name" property="speaker_name"/>
+  		<result column="speaker_desc" property="speaker_desc"/>
+  		<result column="speaker_job" property="speaker_job"/>
+  		<result column="pic_url" property="pic_url"/>
+  	</resultMap>
+  	<!-- 查询主讲人所有 -->
+  	<select id="selectSpeakerAll"  resultMap="speakerMap">
+  		select * from speaker limit #{0},#{1}
+  	</select>
+  	<!-- 查询总条数 -->
+  	<select id="selectSpeakerCount" resultType="Integer">
+  		select count(*) from speaker
+  	</select>
+  	
+  	<!-- 通过id查询主讲人信息 -->
+  	<select id="selectSpeakerById" resultMap="speakerMap">
+  		select * from speaker where id=#{111}
+  	</select>
+  	<!-- 更新主讲人信息 -->
+  	<update id="updateSpeaker" parameterType="speaker">
+  		update speaker 
+  		<set>
+	  		<if test="speaker_name!=null">
+	  			speaker_name=#{speaker_name},
+	  		</if>
+	  		<if test="speaker_desc!=null">
+	  			speaker_desc=#{speaker_desc},
+	  		</if>
+	  		<if test="speaker_job!=null">
+	  			speaker_job=#{speaker_job},
+	  		</if>
+	  		<if test="pic_url!=null">
+	  			pic_url=#{pic_url}
+	  		</if>
+	  	</set>
+  		where id=#{id};
+  	</update>
+  
+  
+  	<!-- 添加主讲人信息 -->
+  	<insert id="addSpeaker" parameterType="speaker">
+  		insert into speaker values(null,#{speaker_name}, #{speaker_desc}, #{speaker_job}, #{pic_url});
+  	</insert>
+  
+  	<!-- 删除主讲人信息 -->
+  	<delete id="deleteSpeaker">
+  		delete from speaker where id=#{dddd};
+  	</delete>
+  	
+
+  	
+  </mapper>

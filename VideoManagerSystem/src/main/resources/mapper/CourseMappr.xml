@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- namespace :代表这个文件的命名空间，根据这个名称可以定位到这个文件-->
+  <mapper namespace="com.zhiyou.mapper.CourseMapper">
+  	<resultMap type="course" id="courseMap">
+  		<id column="id" property="id"/>
+  		<result column="course_title" property="course_title"/>
+  		<result column="course_desc" property="course_desc"/>
+  		<result column="subject_id" property="subject_id"/>
+  		<association property="subject" javaType="subject" >
+  			<id column="subject_id" property="subject_id"/>
+  			<result column="subject_name" property="subject_name"/>
+  		</association>
+  	</resultMap>
+  	<!-- 查询课程所有 -->
+  	<select id="selectCourseAll"  resultMap="courseMap">
+  		select * from course c,subject s where c.subject_id=s.subject_id  limit #{0},#{1}
+  	</select>
+  	<!-- 查询总条数 -->
+  	<select id="selectCourseCount" resultType="Integer">
+  		select count(*) from course
+  	</select>
+  	
+  	<!-- 通过id查到课程的信息 -->
+  	<select id="selectCourseById" resultMap="courseMap">
+  		select * from course c,subject s  where c.subject_id=s.subject_id and id=#{111}
+  	</select>
+  	<!-- 更新课程信息 -->
+  	<update id="updateCourse" parameterType="course">
+  		update course
+  		<set>
+	  		<if test="course_title!=null">
+	  			course_title=#{course_title},
+	  		</if>
+	  		<if test="course_desc!=null">
+	  			course_desc=#{course_desc},
+	  		</if>
+	  		<if test="subject_id!=null">
+	  			subject_id=#{subject_id}
+	  		</if>
+	  	</set>
+  		where id=#{id};
+  	</update>
+  
+  <!-- 添加课程信息 -->
+  <insert id="addCourse" parameterType="course">
+  		insert into course values(null,#{course_title}, #{course_desc}, #{subject_id});
+  </insert>
+  
+  
+  <!-- 	<select id="selectAll" resultMap="userMap">
+  		select * from user
+  	</select> -->
+  	<!-- 删除主讲人信息 -->
+  	<delete id="deleteCourse">
+  		delete from course where id=#{dddd};
+  	</delete>
+  	<!-- 查询学科所有信息 -->
+  	<resultMap type="subject" id="subjectMap">
+  		<id column="subject_id" property="subject_id"/>
+  		<result column="subject_name" property="subject_name"/>
+  	</resultMap>
+  	<select id="selectSubjectAll" resultMap="subjectMap">
+  		select * from subject
+  	</select>
+
+  	
+  </mapper>

@@ -1,0 +1,32 @@
+package com.zhiyou.service;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
+import com.zhiyou.model.Course;
+import com.zhiyou.model.Subject;
+
+public interface CourseService {
+	// 展示课程
+	List<Course> selectCourseAll(int page, int num);
+
+	// 查询总条数
+	int selectCourseCount();
+
+	// 更新课程
+	void updateCourse(Course course);
+
+	// 根据id查询课程信息
+	Course selectCourseById(int id);
+
+	// 添加课程
+	void addCourse(Course course);
+
+	// 删除课程
+	void deleteCourse(int id, HttpServletResponse resp);
+
+	// 添加课程的时候需要添加所属学科
+	// 查询学科所有
+	List<Subject> selectSubjectAll();
+}
