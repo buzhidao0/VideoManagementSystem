@@ -9,10 +9,10 @@ import com.zhiyou.model.Subject;
 
 public interface CourseService {
 	// 展示课程
-	List<Course> selectCourseAll(int page, int num);
+	List<Course> selectCourseAll(int page, int num, String course_title);
 
 	// 查询总条数
-	int selectCourseCount();
+	int selectCourseCount(String course_title);
 
 	// 更新课程
 	void updateCourse(Course course);

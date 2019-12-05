@@ -20,15 +20,15 @@ public class CourseServiceImpl implements CourseService {
 	CourseMapper courseMapper;
 
 	@Override
-	public List<Course> selectCourseAll(int page, int num) {
+	public List<Course> selectCourseAll(int page, int num, String course_title) {
 		// TODO Auto-generated method stub
-		return courseMapper.selectCourseAll(page, num);
+		return courseMapper.selectCourseAll(page, num, course_title);
 	}
 
 	@Override
-	public int selectCourseCount() {
+	public int selectCourseCount(String course_title) {
 		// TODO Auto-generated method stub
-		return courseMapper.selectCourseCount();
+		return courseMapper.selectCourseCount(course_title);
 	}
 
 	@Override

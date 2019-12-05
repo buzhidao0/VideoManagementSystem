@@ -22,15 +22,15 @@ public class CourseController {
 	@RequestMapping("courseShow")
 	public String courseShow(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
-		int count = courseService.selectCourseCount();
+		String course_title = req.getParameter("course_title") == null ? "" : req.getParameter("course_title");
+		int count = courseService.selectCourseCount(course_title);
 		System.out.println("count" + count);
 		int page = req.getParameter("page") == null || req.getParameter("page") == "" ? 1
 				: Integer.valueOf(req.getParameter("page"));
 		System.out.println("\t\t+page\t" + page);
 		req.setAttribute("count", count);
 		req.setAttribute("page", page);
-		System.out.println("courseList" + courseService.selectCourseAll((page - 1) * 5, 5));
-		req.setAttribute("courseList", courseService.selectCourseAll((page - 1) * 5, 5));
+		req.setAttribute("courseList", courseService.selectCourseAll((page - 1) * 5, 5, course_title));
 		return "After/CourseShow";
 
 	}

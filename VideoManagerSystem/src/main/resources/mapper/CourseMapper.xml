@@ -16,11 +16,12 @@
   	</resultMap>
   	<!-- 查询课程所有 -->
   	<select id="selectCourseAll"  resultMap="courseMap">
-  		select * from course c,subject s where c.subject_id=s.subject_id  limit #{0},#{1}
+  		select * from course c,subject s where c.subject_id=s.subject_id 
+  		and course_title like '%' #{2} '%'  limit #{0},#{1}
   	</select>
   	<!-- 查询总条数 -->
   	<select id="selectCourseCount" resultType="Integer">
-  		select count(*) from course
+  		select count(*) from course where course_title like '%' #{0} '%'
   	</select>
   	
   	<!-- 通过id查到课程的信息 -->

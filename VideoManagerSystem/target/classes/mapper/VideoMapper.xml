@@ -124,7 +124,7 @@
 	</select>
 	
 	<!-- 模糊查询 -->
-	<select id="selectLike" resultMap="videoMap" parameterType="video" >
+	<select id="selectLikeVideo" resultMap="videoMap" parameterType="video" >
   		<include refid="as"/>
   	</select>
   	

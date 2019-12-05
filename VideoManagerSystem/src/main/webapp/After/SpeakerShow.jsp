@@ -66,8 +66,8 @@
 	</div>
 	<div>
 	<div class="container">
-		<form action="selectAll">
-			<input class="btn btn-info dropdown-toggle" type="text" name="course_title" placeholder="请输入你要查询的标题">
+		<form action="speakerShow">
+			<input class="btn btn-info dropdown-toggle" type="text" name="speaker_name" placeholder="请输入你要查询的主讲师名字">
 			<input class="btn btn-info dropdown-toggle" type="submit" value="搜索">
 		</form>
 	</div>
@@ -136,8 +136,10 @@
 				</ul>
 			</div>
 		</div>
+	<div class="buttons">
+			<a class="btn btn-default" href="javascript:history.go(-1)">返回</a>
+		</div>
 	</div>
-
 
 <div id="modal-background" class=""></div>
 <div id="confirm-modal" class="modal fade role=" dialog"="" tabindex="-1">

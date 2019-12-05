@@ -12,12 +12,14 @@
   		<result column="pic_url" property="pic_url"/>
   	</resultMap>
   	<!-- 查询主讲人所有 -->
-  	<select id="selectSpeakerAll"  resultMap="speakerMap">
-  		select * from speaker limit #{0},#{1}
+  	<select id="selectSpeakerAll"  resultMap="speakerMap" >
+  		select * from speaker where
+	  		speaker_name like '%' #{2} '%'  limit #{0},#{1}
   	</select>
   	<!-- 查询总条数 -->
   	<select id="selectSpeakerCount" resultType="Integer">
-  		select count(*) from speaker
+  		select count(*) from speaker where
+	  		speaker_name like '%' #{0} '%' 
   	</select>
   	
   	<!-- 通过id查询主讲人信息 -->
@@ -55,6 +57,5 @@
   		delete from speaker where id=#{dddd};
   	</delete>
   	
-
-  	
+	
   </mapper>

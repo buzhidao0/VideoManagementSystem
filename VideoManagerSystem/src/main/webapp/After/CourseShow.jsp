@@ -58,7 +58,6 @@ th {
 		</div>
 	</div>
 
-	<form action="http://localhost:8080/Voids/Course/deleteall.do">
 		<div class="container">
 			<button onclick="showAddPage()" type="button"
 				class="btn btn-info dropdown-toggle" data-toggle="dropdown"
@@ -68,6 +67,13 @@ th {
 				class="btn btn-info dropdown-toggle">批量删除</button>
 		</div>
 
+	<div class="container">
+		<form action="courseShow">
+			<input class="btn btn-info dropdown-toggle" type="text" name="course_title" placeholder="请输入你要查询课程名">
+			<input class="btn btn-info dropdown-toggle" type="submit" value="搜索">
+		</form>
+	</div>
+	
 		<div class="container" style="margin-top: 20px;">
 
 			<table class="table table-bordered table-hover"
@@ -127,8 +133,10 @@ th {
 			</ul>
 		</div>
 	</div>
+		<div class="buttons">
+			<a class="btn btn-default" href="javascript:history.go(-1)">返回</a>
+		</div>
 	</div>
-	</form>
 	<div id="modal-background" class=""></div>
 	<div id="confirm-modal" class="modal fade role=" dialog"="" tabindex="-1">
 		<div class="modal-dialog modal-undefined">
@@ -144,6 +152,7 @@ th {
 			</div>
 		</div>
 	</div>
+	
 	<div id="modal-background" class=""></div>
 </div>
 	<script 

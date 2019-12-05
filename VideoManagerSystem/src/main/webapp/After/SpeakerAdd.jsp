@@ -84,6 +84,7 @@
 				<label for="subjectTitle" class="col-sm-2 control-label">头像地址</label>
 				<div class="col-sm-10">
 					<input class="form-control" name="pic_url" id="subjectTitle" placeholder="头像地址" type="text">
+					<input class="btn btn-info dropdown-toggle" type="file" value="搜索">
 				</div>
 			</div>
 			<div class="form-group">

@@ -7,10 +7,10 @@ import com.zhiyou.model.Speaker;
 public interface SpeakerMapper {
 
 	// 展示主讲人
-	List<Speaker> selectSpeakerAll(int page, int num);
+	List<Speaker> selectSpeakerAll(int page, int num, String speaker_name);
 
 	// 查询总条数
-	int selectSpeakerCount();
+	int selectSpeakerCount(String speaker_name);
 
 	// 更新主讲人信息
 	void updateSpeaker(Speaker speaker);
@@ -24,6 +24,4 @@ public interface SpeakerMapper {
 	// 删除主讲人信息
 	int deleteSpeaker(int id);
 
-	// 模糊查询
-	List<Speaker> selectLike(Speaker speaker);
 }
