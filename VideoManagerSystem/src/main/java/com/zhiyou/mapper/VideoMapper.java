@@ -38,5 +38,6 @@ public interface VideoMapper {
 	List<Course> seleteCourse();
 
 	// 模糊查询
-	List<Video> selectLike(Video video);
+	List<Video> selectLikeVideo(int page, int num, Video video);
+	// List<Video> selectLikeVideo(Video video);
 }

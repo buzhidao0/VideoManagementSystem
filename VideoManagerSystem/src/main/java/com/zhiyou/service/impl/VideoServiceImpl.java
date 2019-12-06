@@ -88,9 +88,9 @@ public class VideoServiceImpl implements VideoService {
 	}
 
 	@Override
-	public List<Video> selectLike(Video video) {
+	public List<Video> selectLikeVideo(int page, int num, Video video) {
 		// TODO Auto-generated method stub
-		return videoMapper.selectLike(video);
+		return videoMapper.selectLikeVideo(page, num, video);
 	}
 
 }

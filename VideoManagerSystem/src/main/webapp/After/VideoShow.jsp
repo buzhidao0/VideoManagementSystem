@@ -53,8 +53,8 @@
 	<h2>视频管理</h2>
   </div>
 </div>
-	
-<form action="http://localhost:8080/Voids/Course/deleteall.do">
+	${likeCustomerList }
+
 	<div class="container">
 	    <button onclick="showAddPage()" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		      添加
@@ -64,7 +64,34 @@
 		      批量删除
 		</button>
 	</div>
-	
+	<div class="container">
+		<form action="selectLikeVideo">
+			<input class="btn btn-info dropdown-toggle" type="text" name="title" placeholder="请输入你要查询的标题">
+				<td>
+					<label for="speaker_id">请选择老师</label>
+				</td>
+				<td colspan="4" class="btn btn-info dropdown-toggle">
+					<select id="speaker_id" name="speaker_id">
+						<option value="">--</option>
+						<c:forEach var="speaker" items="${speaker }">
+							<option value="${speaker.id }">${speaker.speaker_name }</option>
+						</c:forEach>
+					</select>
+				</td>
+				<td>
+					<label for="course_id">请选择课程</label>
+				</td>
+				<td colspan="4" class="btn btn-info dropdown-toggle">
+					<select id="course_id" name="course_id">
+						<option value="">--</option>
+						<c:forEach var="course" items="${course }">
+							<option value="${course.id}">${course.course_title }</option>
+						</c:forEach>
+					</select>
+				</td>
+			<input class="btn btn-info dropdown-toggle" type="submit" value="搜索">
+		</form>
+	</div>
 	<div class="container" style="margin-top: 20px;">
 		
 	<table class="table table-bordered table-hover" style="text-align: center;table-layout:fixed;">
@@ -83,6 +110,24 @@
 	</thead>
       
 	<tbody>
+	<c:if test="${! empty selectLikeVideo }">
+	<c:forEach items="${selectLikeVideo }" var="selectLikeVideo">
+	
+        <tr>
+          <td><input type="checkbox" ></td>
+          <td>${selectLikeVideo.video_id }</td>
+          <td>${selectLikeVideo.title }</td>
+          <td style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">${selectLikeVideo.detail }</td>
+          <td>${selectLikeVideo.speaker.speaker_name}</td>
+          <td>${selectLikeVideo.time }</td>
+          <td>${selectLikeVideo.play_num }</td>
+          <td><a href="updateVideo?id=${selectLikeVideo.video_id }">✎</a></td>
+          <td><a onclick="delCourseById('${selectLikeVideo.video_id }','${selectLikeVideo.title }')" >X</a></td>
+		</tr>
+	</c:forEach>
+	</c:if>
+	
+	<c:if test="${ empty selectLikeVideo }">
 	<c:forEach items="${videoList }" var="videoList">
 	
         <tr>
@@ -97,6 +142,7 @@
           <td><a onclick="delCourseById('${videoList.video_id }','${videoList.title }')" >X</a></td>
 		</tr>
 	</c:forEach>
+	</c:if>
 	</tbody>
 	</table>
     
@@ -124,9 +170,12 @@
 				</c:if>
 			</ul>
 		</div>
+		<div class="buttons">
+		<a class="btn btn-default" href="javascript:history.go(-1)">返回</a>
+	</div>
 	</div>
 	
-</form>
+
 
 <div id="modal-background" class=""></div>
 <div id="confirm-modal" class="modal fade role=" dialog"="" tabindex="-1">
@@ -142,6 +191,7 @@
 			<div id="modal-footer" class="modal-footer"></div>
 		</div>
 	</div>
+	
 </div>
 <div id="modal-background" class=""></div>
 

@@ -37,21 +37,27 @@
 
 	<!-- 查询课程所有 -->
 	<select id="selectVideoAll" resultMap="videoMap">
-		select * from video v,speaker s where v.speaker_id=s.id limit #{0},#{1}
+		select * from video
+		v,speaker s where v.speaker_id=s.id limit #{0},#{1}
 	</select>
 	<!-- 查询总条数 -->
 	<select id="selectVideoCount" resultType="Integer">
-		select count(*) from video
+		select count(*) from
+		video
 	</select>
 
 	<!-- 通过id查到课程的信息 -->
 	<select id="selectVideoById" resultMap="videoMap">
-		select * from (select * from video v2,
-		(select * from course c3, (select s.subject_id sid ,s.subject_name from
+		select * from (select *
+		from video v2,
+		(select * from course c3, (select s.subject_id sid
+		,s.subject_name from
 		subject s) s2
-		where c3.subject_id = s2.sid) c2 where v2.course_id = c2.id) v,speaker s
+		where c3.subject_id = s2.sid) c2
+		where v2.course_id = c2.id) v,speaker s
 		where s.id = v.speaker_id
-		and v.video_id=#{id}
+		and
+		v.video_id=#{id}
 	</select>
 	<!-- 更新课程信息 -->
 	<update id="updateVideo" parameterType="video">
@@ -88,7 +94,8 @@
 
 	<!-- 添加课程信息 -->
 	<insert id="addVideo" parameterType="video">
-		insert into video values(null,#{title}, #{detail}, #{time}, #{speaker_id},
+		insert into video
+		values(null,#{title}, #{detail}, #{time}, #{speaker_id},
 		#{course_id},#{video_url},#{image_url},0);
 	</insert>
 
@@ -114,40 +121,32 @@
 
 	<resultMap type="course" id="coursemap">
 		<id column="id" property="id" />
-			<result column="course_title" property="course_title" />
-			<result column="course_desc" property="course_desc" />
-			<result column="subject_id" property="subject_id" />
+		<result column="course_title" property="course_title" />
+		<result column="course_desc" property="course_desc" />
+		<result column="subject_id" property="subject_id" />
 	</resultMap>
+
+
 	
 	<select id="seleteCourse" resultMap="coursemap">
 		select * from course
 	</select>
-	
 	<!-- 模糊查询 -->
-	<select id="selectLikeVideo" resultMap="videoMap" parameterType="video" >
-  		<include refid="as"/>
-  	</select>
-  	
-  	
-  	<sql id="as" >
-  		select * from video 
-  		<trim prefix="where" prefixOverrides="and/or">
-  			<if test="video_id!=0">
-	  			video_id like concat('%',#{video_id},'%') 
-	  		</if>
-  			<if test="title!=null">
-	  			and title like concat('%',#{title} ,'%') 
-	  		</if>
-	  		<if test="detail!=0">
-	  			and detail like  concat('%',#{detail},'%')  
-	  		</if>
-	  		<if test="speaker_id!=null">
-	  		    and speaker_id like concat('%',#{speaker_id} ,'%')  
-	  		</if>
-	  		<if test="course_id!=null">
-	  			and course_id like concat('%', #{course_id} ,'%') 
-	  		</if>
-	  	</trim>
-  	</sql>
-	
+	<select id="selectLikeVideo" resultMap="videoMap">
+		select * from video v,speaker s
+		<where>
+		<if test="title!=''">
+				title like concat('%',#{title},'%')
+		</if>
+		<if test="speaker_id!=0">
+				and speaker_id like concat('%',#{speaker_id},'%')
+		</if>
+		<if test="course_id!=0">
+				and course_id like concat('%',#{course_id},'%')
+		</if>
+		</where>
+			and v.speaker_id=s.id
+	</select>
+
+
 </mapper>

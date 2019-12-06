@@ -125,7 +125,7 @@ th {
 					<li class="paginate_button previous disabled }"><a
 						href="courseShow?page=${page-1 }">上一页</a></li>
 				</c:if>
-				<li class="paginate_button active"><a href="#">${page }</a></li>
+				<li class="paginate_button active"><a>${page }</a></li>
 				<c:if test="${page<zpage }">
 					<li class="paginate_button next disabled"><a
 						href="courseShow?page=${page+1 }">下一页</a></li>

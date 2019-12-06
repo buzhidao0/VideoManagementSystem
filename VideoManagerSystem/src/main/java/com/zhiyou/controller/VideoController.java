@@ -22,15 +22,15 @@ public class VideoController {
 	public String videoShow(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 
 		int count = videoService.selectVideoCount();
-		System.out.println("count" + count);
 		int page = req.getParameter("page") == null || req.getParameter("page") == "" ? 1
 				: Integer.valueOf(req.getParameter("page"));
-		System.out.println("\t\t+page\t" + page);
 		req.setAttribute("count", count);
 		req.setAttribute("page", page);
+		req.setAttribute("speaker", videoService.selectSpeaker());
+		req.setAttribute("course", videoService.seleteCourse());
 		System.out.println("videoList" + videoService.selectVideoAll((page - 1) * 5, 5));
 		List<Video> videoList = videoService.selectVideoAll((page - 1) * 5, 5);
-		req.setAttribute("videoList", videoService.selectVideoAll((page - 1) * 5, 5));
+		req.setAttribute("videoList", videoList);
 		return "After/VideoShow";
 
 	}
@@ -73,4 +73,25 @@ public class VideoController {
 		videoService.deleteVideo(id, resp);
 	}
 
+	@RequestMapping("selectLikeVideo")
+	public String selectLikeVideo(Video video, HttpServletRequest req, HttpServletResponse resp) {
+//		String title = req.getParameter("title") == null ? "" : req.getParameter("title");
+//		Integer speaker_id = req.getParameter("speaker_id") == null || req.getParameter("speaker_id") == "" ? 0
+//				: Integer.valueOf(req.getParameter("speaker_id"));
+//		Integer course_id = req.getParameter("course_id") == null || req.getParameter("course_id") == "" ? 0
+//				: Integer.valueOf(req.getParameter("course_id"));
+		int count = videoService.selectVideoCount();
+		int page = req.getParameter("page") == null || req.getParameter("page") == "" ? 1
+				: Integer.valueOf(req.getParameter("page"));
+		req.setAttribute("count", count);
+		req.setAttribute("page", page);
+		// List<Video> selectLikeVideo = videoService.selectLikeVideo(title, speaker_id,
+		// course_id);
+		List<Video> selectLikeVideo = videoService.selectLikeVideo((page - 1) * 5, 5, video);
+
+		System.out.println("\t\tselectLikeVideo" + selectLikeVideo);
+		req.setAttribute("selectLikeVideo", selectLikeVideo);
+		return "After/VideoShow";
+
+	}
 }

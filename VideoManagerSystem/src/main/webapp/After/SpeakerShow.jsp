@@ -100,13 +100,7 @@
           <td><a onclick="delCourseById('${speakerList.id}','${speakerList.speaker_name}')">X</a></td>
 		</tr>
 	</c:forEach>
-    <%--     <tr>
-        	<td colspan="2">
-        		<font>总共 ${count}条,当前第${page }页</font>
-				<a href="">1</a>&gt;
-				<a href="">2</a>&gt;
-        	</td>
-        </tr> --%>
+    
 	</tbody>
 	</table>
     <div class="pager-info">
