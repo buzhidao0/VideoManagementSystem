@@ -2,6 +2,8 @@ package com.zhiyou.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.zhiyou.model.Course;
 import com.zhiyou.model.Subject;
 
@@ -28,4 +30,5 @@ public interface CourseMapper {
 	// 查询学科所有
 	List<Subject> selectSubjectAll();
 
+	int removeCourse(@Param("userIdList") List<Integer> userIdList);
 }

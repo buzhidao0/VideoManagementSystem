@@ -57,5 +57,15 @@
   		delete from speaker where id=#{dddd};
   	</delete>
   	
+  	<!-- 批量删除 -->
+
+	<delete id="removeSpeaker" parameterType="list">
+		DELETE FROM speaker WHERE id IN
+		<foreach collection="userIdList" item="id" open="("
+			separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
+  	
 	
   </mapper>

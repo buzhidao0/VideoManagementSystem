@@ -80,7 +80,7 @@ th {
 				style="text-align: center; table-layout: fixed;">
 				<thead>
 					<tr class="active">
-						<th><input type="checkbox" id="all"></th>
+						<th><input type="checkbox"  onchange="a()" id="all"></th>
 						<th>序号</th>
 						<th style="width: 16%">标题</th>
 						<th style="width: 60%">简介</th>
@@ -92,7 +92,7 @@ th {
 				<tbody>
 					<c:forEach items="${courseList }" var="courseList">
 						<tr>
-							<td><input type="checkbox"></td>
+							<td><input type="checkbox" name="c" value="${courseList.id}"></td>
 							<td>${courseList.id}</td>
 							<td>${courseList.course_title}</td>
 							<td
@@ -187,6 +187,31 @@ th {
 			}
 		});
 	}
+	function a() {
+	    var stuts=document.getElementById("all").checked;
+	    var c=document.getElementsByName("c");
+	     for(var i=0;i<c.length;i++){
+	          c[i].checked=stuts;
+	      }
+	    }
+	function deleteAll(){
+        var checkedNum  = $("input[name='c']:checked").length;
+		  var userIds = new Array();
+          $("input[name='c']:checked").each(function(){
+              userIds.push($(this).val());
+          });
+        	if(confirm("确定删除所选项？")){
+             $.post("delAllCourse",{userIds:userIds},
+                function(data){
+					if(data=='success'){
+						Confirm.show('温馨提示：', '删除成功');
+						document.location.reload();
+					}else{
+						Confirm.show('温馨提示：', '操作失败');
+					}
+             	 });
+        	}
+     }
 </script>
 </body>
 </html>

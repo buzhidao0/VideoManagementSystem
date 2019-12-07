@@ -67,4 +67,18 @@ public class CourseServiceImpl implements CourseService {
 		return courseMapper.selectSubjectAll();
 	}
 
+	@Override
+	public void removeCourse(List<Integer> userIdList, HttpServletResponse resp) {
+		int i = courseMapper.removeCourse(userIdList);
+		if (i == userIdList.size()) {
+			try {
+				resp.getWriter().write("success");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			;
+		}
+
+	}
+
 }

@@ -67,5 +67,14 @@
   		select * from subject
   	</select>
 
+<!-- 批量删除 -->
+
+	<delete id="removeCourse" parameterType="list">
+		DELETE FROM course WHERE id IN
+		<foreach collection="userIdList" item="id" open="("
+			separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
   	
   </mapper>

@@ -54,4 +54,19 @@
   		<!-- 引用MyBatis的session工厂 -->
   		<property name="sqlSessionFactory" ref="sessionFactory"></property>
   	</bean>
+  	
+  	
+  	
+  	 <!-- 虽然所有的配置都有默认值，可以不配置，但因为spring类太多了，不知道用户要使用的类，所以需要开发者自己注入该对象到容器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	     <!-- 文件最大尺寸 -->
+	     <property name="maxUploadSize" value="#{1024*1024}"></property>
+	     <!-- 每秒缓存多少自己 -->
+	     <property name="maxInMemorySize" value="4094"></property>
+	     <!-- 指定编码格式 -->
+	     <property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+  	
+  	
+  	
   </beans>

@@ -25,4 +25,5 @@ public interface SpeakerService {
 	// 删除主讲人信息
 	void deleteSpeaker(int id, HttpServletResponse resp);
 
+	void removeSpeaker(List<Integer> userIdList, HttpServletResponse resp);
 }

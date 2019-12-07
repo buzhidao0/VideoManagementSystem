@@ -7,12 +7,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.zhiyou.mapper.VideoMapper;
 import com.zhiyou.model.Course;
 import com.zhiyou.model.Speaker;
 import com.zhiyou.model.Video;
 import com.zhiyou.service.VideoService;
+import com.zhiyou.util.FTPUtil;
 
 @Service
 public class VideoServiceImpl implements VideoService {
@@ -88,9 +90,40 @@ public class VideoServiceImpl implements VideoService {
 	}
 
 	@Override
-	public List<Video> selectLikeVideo(int page, int num, Video video) {
+	public List<Video> selectLikeVideo(String title, int speaker_id, int course_id) {
 		// TODO Auto-generated method stub
-		return videoMapper.selectLikeVideo(page, num, video);
+		return videoMapper.selectLikeVideo(title, speaker_id, course_id);
+	}
+
+	@Override
+	public int selectLikeVideoCount(String title, int speaker_id, int course_id) {
+		// TODO Auto-generated method stub
+		return videoMapper.selectLikeVideoCount(title, speaker_id, course_id);
+	}
+
+	public void removeVideo(List<Integer> userIdList, HttpServletResponse resp) {
+		int i = videoMapper.removeVideo(userIdList);
+		if (i == userIdList.size()) {
+			try {
+				resp.getWriter().write("success");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			;
+		}
+	}
+
+	@Override
+	public String addVideoIMG(MultipartFile image_url) {
+		try {
+			String imgName = FTPUtil.upload(image_url.getInputStream(), image_url.getOriginalFilename());
+			return imgName;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+
 	}
 
 }

@@ -34,9 +34,9 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-9">
 			<ul class="nav navbar-nav">
-				<li class="active"><a href="videoShow">视频管理</a></li>
+				<li><a href="videoShow">视频管理</a></li>
 				<li class="active"><a href="speakerShow">主讲人管理</a></li>
-				<li class="active"><a href="courseShow">课程管理</a></li>
+				<li><a href="courseShow">课程管理</a></li>
 			</ul>
 			<p class="navbar-text navbar-right">
 				<span>${sessionKey.accounts }</span> <i class="glyphicon glyphicon-log-in" aria-hidden="true"></i>&nbsp;&nbsp;<a  class="navbar-link">退出</a>
@@ -78,7 +78,7 @@
 	<table class="table table-bordered table-hover" style="text-align: center;table-layout:fixed;">
 	<thead>
         <tr class="active">
-          <th><input type="checkbox" id="all"></th>
+          <th><input type="checkbox" onchange="a()" id="all"></th>
           <th>序号</th>
           <th style="width:10%">名称</th>
           <th style="width:60%">简介</th>
@@ -91,7 +91,7 @@
 	<tbody>
 	<c:forEach items="${speakerList }" var="speakerList">
         <tr>
-          <td><input type="checkbox" ></td>
+          <td><input type="checkbox" name="c" value="${speakerList.id}" ></td>
           <td>${speakerList.id}</td>
           <td>${speakerList.speaker_name}</td>
           <td style="overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">${speakerList.speaker_desc}</td>
@@ -180,6 +180,31 @@
 			}
 		});
 	}
+	function a() {
+	    var stuts=document.getElementById("all").checked;
+	    var c=document.getElementsByName("c");
+	     for(var i=0;i<c.length;i++){
+	          c[i].checked=stuts;
+	      }
+	    }
+	function deleteAll(){
+        var checkedNum  = $("input[name='c']:checked").length;
+		  var userIds = new Array();
+          $("input[name='c']:checked").each(function(){
+              userIds.push($(this).val());
+          });
+        	if(confirm("确定删除所选项？")){
+             $.post("delAllSpeaker",{userIds:userIds},
+                function(data){
+					if(data=='success'){
+						Confirm.show('温馨提示：', '删除成功');
+						document.location.reload();
+					}else{
+						Confirm.show('温馨提示：', '操作失败');
+					}
+             	 });
+        	}
+     }
 </script>
 </body>
 </html>

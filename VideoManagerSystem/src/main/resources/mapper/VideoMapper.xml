@@ -127,7 +127,7 @@
 	</resultMap>
 
 
-	
+
 	<select id="seleteCourse" resultMap="coursemap">
 		select * from course
 	</select>
@@ -135,18 +135,42 @@
 	<select id="selectLikeVideo" resultMap="videoMap">
 		select * from video v,speaker s
 		<where>
-		<if test="title!=''">
+			<if test="title!=''">
 				title like concat('%',#{title},'%')
-		</if>
-		<if test="speaker_id!=0">
+			</if>
+			<if test="speaker_id!=0">
 				and speaker_id like concat('%',#{speaker_id},'%')
-		</if>
-		<if test="course_id!=0">
+			</if>
+			<if test="course_id!=0">
 				and course_id like concat('%',#{course_id},'%')
-		</if>
+			</if>
 		</where>
-			and v.speaker_id=s.id
+		and v.speaker_id=s.id
 	</select>
 
+	<!-- 查询模糊查询总条数 -->
+	<select id="selectLikeVideoCount" resultType="Integer">
+		select count(*) from video
+		<where>
+			<if test="title!=''">
+				title like concat('%',#{title},'%')
+			</if>
+			<if test="speaker_id!=0">
+				and speaker_id like concat('%',#{speaker_id},'%')
+			</if>
+			<if test="course_id!=0">
+				and course_id like concat('%',#{course_id},'%')
+			</if>
+		</where>
+	</select>
 
+	<!-- 批量删除 -->
+
+	<delete id="removeVideo" parameterType="list">
+		DELETE FROM video WHERE video_id IN
+		<foreach collection="userIdList" item="id" open="("
+			separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
 </mapper>

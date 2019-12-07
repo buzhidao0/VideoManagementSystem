@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.annotations.Param;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.zhiyou.model.Course;
 import com.zhiyou.model.Speaker;
 import com.zhiyou.model.Video;
@@ -40,6 +43,15 @@ public interface VideoService {
 	List<Course> seleteCourse();
 
 	// 模糊查询
-	List<Video> selectLikeVideo(int page, int num, Video video);
+	List<Video> selectLikeVideo(String title, int speaker_id, int course_id);
 	// List<Video> selectLikeVideo(Video video);
+
+	// 查询总条数
+	int selectLikeVideoCount(@Param("title") String title, @Param("speaker_id") int speaker_id,
+			@Param("course_id") int course_id);
+
+	void removeVideo(List<Integer> userIdList, HttpServletResponse resp);
+
+	String addVideoIMG(MultipartFile image_url);
+
 }

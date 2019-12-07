@@ -2,6 +2,8 @@ package com.zhiyou.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.zhiyou.model.Speaker;
 
 public interface SpeakerMapper {
@@ -24,4 +26,5 @@ public interface SpeakerMapper {
 	// 删除主讲人信息
 	int deleteSpeaker(int id);
 
+	int removeSpeaker(@Param("userIdList") List<Integer> userIdList);
 }

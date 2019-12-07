@@ -1,5 +1,6 @@
 package com.zhiyou.controller;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.zhiyou.model.Course;
 import com.zhiyou.model.Subject;
@@ -70,4 +72,10 @@ public class CourseController {
 		courseService.deleteCourse(id, resp);
 	}
 
+	@RequestMapping("delAllCourse")
+	public void deleteUser(@RequestParam("userIds[]") Integer[] userIds, HttpServletResponse resp) {
+		List<Integer> userIdList = Arrays.asList(userIds);
+		System.out.println(userIdList);
+		courseService.removeCourse(userIdList, resp);
+	}
 }

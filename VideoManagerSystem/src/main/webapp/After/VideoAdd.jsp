@@ -72,7 +72,7 @@ b {
 
 	<div class="container" style="margin-top: 20px;">
 
-		<form id="infoForm" action="alterAddVideo" class="form-horizontal" method="post">
+		<form id="infoForm" action="alterAddVideo" class="form-horizontal" method="post"  enctype="multipart/form-data"   >
 
 
 			<div class="form-group">
@@ -113,15 +113,13 @@ b {
 			<div class="form-group">
 				<label for="subjectTitle" class="col-sm-2 control-label">封面图片地址</label>
 				<div class="col-sm-10">
-					<input class="form-control" name="image_url" id="image_url"
-						placeholder="封面图片地址" type="text">
+					<input class="form-control" name="image1" id="image_url" type="file">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="subjectTitle" class="col-sm-2 control-label">视频播放地址</label>
 				<div class="col-sm-10">
-					<input class="form-control" name="video_url" id="video_url"
-						placeholder="视频播放地址" type="text">
+					<input class="form-control" name="video1" id="video_url"  type="file">
 				</div>
 			</div>
 			<div class="form-group">

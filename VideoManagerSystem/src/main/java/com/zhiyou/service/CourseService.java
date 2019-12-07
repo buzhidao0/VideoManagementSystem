@@ -29,4 +29,6 @@ public interface CourseService {
 	// 添加课程的时候需要添加所属学科
 	// 查询学科所有
 	List<Subject> selectSubjectAll();
+
+	void removeCourse(List<Integer> userIdList, HttpServletResponse resp);
 }
